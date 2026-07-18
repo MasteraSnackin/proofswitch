@@ -1,6 +1,6 @@
 # ProofSwitch — Demo Video Script
 
-Target length: **4 minutes 45 seconds**. Absolute maximum: **5 minutes**.
+Published length: **4 minutes 49 seconds**. Absolute maximum: **5 minutes**.
 
 ## 0:00–0:30 — The problem
 
@@ -22,13 +22,13 @@ Start the judge walkthrough and run the goal-shock scenario.
 
 Show the cancellation checkpoint, hold/recovery state, reopened quotes, decision receipt and counterfactual-risk comparison.
 
-“The same reducer also handles a single-source outlier without unnecessary quote churn and a stale feed by withdrawing the market until freshness returns.”
+“The separate Demo Lab simulator also demonstrates a single-source outlier without unnecessary quote churn and a stale feed by withdrawing the market until freshness returns.”
 
 ## 2:20–3:35 — How TxLINE powers the backend
 
 Open the Live Control Room and then the judge submission pack.
 
-“The live backend is implemented around TxLINE’s normalised World Cup surface. The server exchanges the sponsor token at `POST /auth/guest/start`, discovers fixtures from `/api/fixtures/snapshot`, seeds odds and scores from their snapshot endpoints, then consumes both SSE streams. Those events enter the same deterministic reducer you just saw. The browser never receives the sponsor token.”
+“The live backend is implemented around TxLINE’s World Cup surface. The server starts an anonymous guest session at `POST /auth/guest/start` to obtain a JWT. The activated API token is a separate credential. It discovers fixtures from `/api/fixtures/snapshot`, seeds odds and scores from their snapshot endpoints, then consumes both SSE streams. Those inputs are adapted into the production live reducer used by this synthetic pipeline rehearsal. The browser receives neither credential.”
 
 “This recording uses the labelled synthetic production-path rehearsal because no sponsor credential is configured in this workspace. The live path fails closed; it never silently replaces missing TxLINE data with synthetic data. A credential-backed fixture and stream run is still required before claiming live TxLINE evidence.”
 
@@ -40,7 +40,7 @@ Show runtime status, credential checks, the endpoint table and the synthetic-sou
 
 Show the scorecard, audit timeline and unverified Solana state.
 
-## 4:20–4:55 — Close
+## 4:20–4:49 — Close
 
 “ProofSwitch is built for sports trading teams and market makers who need fast, explainable protection during high-volatility moments. It is a working paper-trading agent, not a betting app. The submission targets Trading Tools and Agents and the London local prize. The deployed application, public repository, technical documentation and exact TxLINE endpoint list are linked with this submission.”
 

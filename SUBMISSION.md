@@ -2,7 +2,7 @@
 
 ## Submission links
 
-- Demo video: **pending upload**
+- Demo video: <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds
 - Public GitHub repository: <https://github.com/MasteraSnackin/proofswitch>
 - Deployed application: <https://proofswitch.vercel.app>
 - Judge documentation: <https://proofswitch.vercel.app/submission>
@@ -29,7 +29,7 @@ In-play markets move fastest when a goal, red card or feed failure occurs. Those
 
 ## Technical highlights
 
-- One deterministic reducer handles snapshots, SSE updates, synthetic rehearsal and replay.
+- The live reducer handles snapshots, SSE updates and the synthetic production-path rehearsal; the Demo Lab is a separate deterministic simulator.
 - Sharp-movement detection combines consensus-price movement, confirmed match events and stream freshness.
 - The paper market maker cancels unsafe quotes, enforces a hold and waits for stable recovery evidence before reopening.
 - Live mode fails closed and never substitutes synthetic data when credentials or upstream contracts fail.
@@ -43,7 +43,7 @@ The following upstream surface is implemented and contract-tested. It must be de
 
 | Method | Endpoint | Use in ProofSwitch |
 | --- | --- | --- |
-| `POST` | `/auth/guest/start` | Exchange the server-side sponsor token for a short-lived guest session. |
+| `POST` | `/auth/guest/start` | Create an anonymous guest session and return its short-lived JWT. |
 | `GET` | `/api/fixtures/snapshot` | Discover covered World Cup fixtures. |
 | `GET` | `/api/odds/snapshot/{fixtureId}` | Seed the match-winner StablePrice state. |
 | `GET` | `/api/scores/snapshot/{fixtureId}` | Seed score and match-state data. |
@@ -68,7 +68,7 @@ Every public response identifies its source as synthetic. These endpoints prove 
 
 ## TxLINE API feedback
 
-We liked the separation between initial snapshots and SSE updates, the normalised fixture, odds and score families, and StablePrice consensus values that map cleanly into a shock-detection policy. That structure allowed one deterministic reducer to power both credential-free rehearsal and the intended live path.
+We liked the separation between initial snapshots and SSE updates, the normalised fixture, odds and score families, and StablePrice consensus values that map cleanly into a shock-detection policy. That structure lets the synthetic production-path rehearsal exercise the intended live reducer without representing the rehearsal as genuine TxLINE traffic.
 
 The main friction was the multi-part live setup: sponsor-token access, guest-session authentication and matching configuration across the API host, Solana network, RPC and programme ID. A compact end-to-end devnet example covering authentication, stream resumption, score-sequence handling and the stat-validation proof lifecycle would reduce integration time.
 

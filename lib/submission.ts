@@ -1,6 +1,6 @@
 export const submissionLinks = {
   repository: "https://github.com/MasteraSnackin/proofswitch",
-  demoVideo: "",
+  demoVideo: "https://youtu.be/mQ84gAyAx9s",
 } as const;
 
 export const syntheticJudgeFixtureId = 20_260_001;
@@ -9,7 +9,7 @@ export const txlineEndpoints = [
   {
     method: "POST",
     path: "/auth/guest/start",
-    purpose: "Exchange the sponsor API token for a short-lived guest session.",
+    purpose: "Create an anonymous guest session and return its short-lived JWT.",
   },
   {
     method: "GET",

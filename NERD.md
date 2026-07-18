@@ -14,7 +14,7 @@
 - P1: Real credentialed TxLINE run still pending.
 - P2: Browser visual QA still pending.
 - P2: Request IDs and provider timing absent.
-- P3: Screenshots and demo video absent.
+- P3: Dedicated repository screenshots are absent; the demo video is published.
 
 ## Changes Made
 

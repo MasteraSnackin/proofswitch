@@ -46,7 +46,7 @@ test("server-renders the ProofSwitch prototype", async () => {
   assert.match(html, /Not claimed in this build/i);
   assert.match(html, /TxLINE track coverage/i);
   assert.match(html, /Sharp movement detector \+ in-play market maker/i);
-  assert.match(html, /working local agent with simulated TxLINE-shaped feeds/i);
+  assert.match(html, /mandatory live-input requirement remains blocked/i);
   assert.match(html, /Goal shock \+ safe reopen/i);
   assert.match(html, /What this replay demonstrates/i);
   assert.match(html, /Solana not connected/i);
@@ -94,6 +94,7 @@ test("keeps the application deterministic and integration boundaries explicit", 
   assert.match(submissionConfig, /\/api\/fixtures\/snapshot/);
   assert.match(submissionConfig, /\/api\/scores\/stat-validation/);
   assert.match(submissionConfig, /https:\/\/github\.com\/MasteraSnackin\/proofswitch/);
+  assert.match(submissionConfig, /https:\/\/youtu\.be\/mQ84gAyAx9s/);
   assert.match(page, /Start 90-second judge walkthrough/);
   assert.match(page, /Open production-path rehearsal/);
   assert.match(page, /Latest material decision/);

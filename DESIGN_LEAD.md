@@ -35,4 +35,4 @@ The main risk before this pass was discoverability. The live control room had st
 
 - No fresh visual screenshot pass was performed in this turn.
 - Exact mobile viewport behaviour should be checked manually before public submission.
-- A demo video or screenshots would help judges who inspect the repository without running the app.
+- The published demo video covers the judge path; dedicated repository screenshots remain optional.

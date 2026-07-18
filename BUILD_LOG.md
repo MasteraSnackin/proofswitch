@@ -104,6 +104,18 @@ The production build emits a non-fatal bundler warning from Anchor's ESM entry.
 This does not establish that the read-only Solana runtime works against a live
 RPC; the genuine validation record above remains pending.
 
+## Public submission artefacts as at 19 July 2026
+
+- Public repository: <https://github.com/MasteraSnackin/proofswitch>
+- Deployed application: <https://proofswitch.vercel.app>
+- Judge pack: <https://proofswitch.vercel.app/submission>
+- Demo video: <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds
+- Technical documentation and bounded pre-credential feedback are included in
+  the repository and judge pack.
+
+These artefacts prove a working synthetic application. They do not replace the
+still-required credential-backed TxLINE input recorded below.
+
 ## Submission evidence still required
 
 - [ ] Obtain and activate TxLINE access on the intended network.
@@ -117,13 +129,13 @@ RPC; the genuine validation record above remains pending.
       with the current hackathon terms.
 - [ ] Complete significant entrant-led work during the event if the rules require
       it, and record the decisions and changes here.
-- [ ] Create the public repository and remove secrets, private traces and licensed
-      data before publishing.
+- [x] Create the public repository and exclude secrets, private traces and
+      licensed raw data from tracked files.
 - [ ] Obtain explicit TxODDS permission before publishing any derived summary
       from a genuine TxLINE run; without it, share only the synthetic public demo
       summary.
-- [ ] Produce the deployed app or API, documentation and demonstration video
-      required by the selected track.
+- [x] Produce the deployed app, functional synthetic API, documentation and
+      sub-five-minute demonstration video required for initial screening.
 - [ ] Submit through the organiser's official channel before the deadline.
 
 ## Entrant sign-off

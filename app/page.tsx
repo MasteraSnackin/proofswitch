@@ -69,7 +69,7 @@ const txlineCoverageCards = [
     label: "TxLINE data ingestion",
     title: "Normalised odds and scores",
     detail:
-      "The live path is built around TxLINE-shaped fixture, StablePrice odds, score snapshot and SSE events, with synthetic data using the same reducer until sponsor credentials are added.",
+      "The live path is built around TxLINE fixture, StablePrice odds, score snapshot and SSE contracts. A labelled synthetic production-path rehearsal feeds equivalent normalised inputs into the production reducer without invoking TxLINE.",
   },
   {
     label: "Autonomous strategy",
@@ -87,7 +87,7 @@ const txlineCoverageCards = [
     label: "Submission readiness",
     title: "Demo, repo and endpoint checklist",
     detail:
-      "The app now surfaces the exact screening story judges need: working agent/tool, track fit, endpoints used, demo-video flow, live-credential gap and sponsor feedback to collect.",
+      "The app surfaces the screening story judges need: working agent/tool, track fit, endpoints integrated, published demo video, live-credential gap and clearly bounded pre-credential sponsor feedback.",
   },
 ];
 
@@ -508,9 +508,10 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
           ))}
         </div>
         <p className="sponsor-coverage-note">
-          Current status: working local agent with simulated TxLINE-shaped feeds. Final eligibility
-          still requires adding the sponsor token, running one genuine live TxLINE session, publishing
-          the repo, deploying an app or API endpoint, and recording the five-minute demo video.
+          Current status: the deployed application, public repository, demo video, technical pack
+          and synthetic judge modes are available. The mandatory live-input requirement remains
+          blocked until an activated TxLINE API token is configured so the server can obtain a guest
+          JWT and record one genuine fixture, odds and score-stream session.
         </p>
         <a className="button secondary button-link sponsor-pack-link" href="/submission">
           Open technical documentation and submission pack

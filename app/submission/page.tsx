@@ -6,7 +6,7 @@ import {
 } from "../../lib/submission";
 
 const technicalHighlights = [
-  "One deterministic reducer handles snapshots, streams, synthetic rehearsal and replay.",
+  "The live reducer handles snapshots, SSE updates and the synthetic production-path rehearsal; the Demo Lab is a separate deterministic simulator.",
   "The sharp-movement detector reacts to consensus shocks, confirmed score events and stale data.",
   "The paper market maker cancels unsafe quotes, enforces a hold, then reopens only after stable recovery evidence.",
   "Live mode fails closed: missing credentials or invalid contracts never fall back to synthetic data.",
@@ -17,9 +17,9 @@ const videoRunSheet = [
   ["0:00–0:30", "Problem", "Goals, odds shocks and stale feeds can leave unsafe quotes exposed."],
   ["0:30–0:55", "Product", "ProofSwitch is an autonomous in-play risk operator for trading teams and market makers."],
   ["0:55–2:20", "Working app", "Run the goal-shock walkthrough: detect, cancel, hold, stabilise and reopen."],
-  ["2:20–3:35", "TxLINE backend", "Show the fixture, snapshot and SSE adapters feeding the same reducer; state whether the session is synthetic or credential-backed."],
+  ["2:20–3:35", "TxLINE backend", "Show the fixture, snapshot and SSE adapters around the production reducer; identify the recording as a synthetic rehearsal rather than a credential-backed session."],
   ["3:35–4:20", "Evidence", "Review the scorecard, audit trail, paper execution and guarded Solana boundary."],
-  ["4:20–4:55", "Close", "Explain the business value, Trading Tools and Agents fit, public app and repository."],
+  ["4:20–4:49", "Close", "Explain the business value, Trading Tools and Agents fit, public app and repository."],
 ] as const;
 
 function ArtifactLink({
@@ -159,10 +159,11 @@ export default function SubmissionPage() {
           <p>
             We liked the separation between initial snapshots and SSE updates, the normalised fixture,
             odds and score families, and StablePrice consensus values that map cleanly into a shock policy.
-            This allowed one reducer to power both deterministic rehearsal and the intended live path.
+            The same normalised contract lets the synthetic production-path rehearsal exercise the
+            intended live reducer without being represented as genuine TxLINE traffic.
           </p>
           <p>
-            The main friction was the multi-part live setup: sponsor token access, guest-session
+            The main friction was the multi-part live setup: activated API-token access, guest-session
             authentication and matching configuration across API host, Solana network, RPC and programme
             ID. A compact end-to-end devnet example covering authentication, stream resumption, score
             sequences and the stat-validation lifecycle would reduce integration time.

@@ -48,15 +48,15 @@ ProofSwitch is designed to cover the Trading Tools and Agents brief: a running a
 
 | Requirement | Status | Notes |
 | --- | --- | --- |
-| Demo video up to five minutes | TODO | Record the problem, local app walkthrough, live-control-room flow, and how TxLINE powers the backend. |
+| Demo video up to five minutes | Published and verified | <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds, covering the problem, deployed app, agent controls, production-path rehearsal and TxLINE integration boundary. |
 | Public repo | Published | <https://github.com/MasteraSnackin/proofswitch> |
 | Working deployed website or functional API/devnet endpoint | Published and verified | <https://proofswitch.vercel.app> with judge pack at <https://proofswitch.vercel.app/submission>. |
 | Brief technical documentation | Covered | README, `ARCHITECTURE.md`, reports and endpoint list cover the core idea and implementation. |
-| Specific TxLINE endpoints used | Covered below | Endpoint list is documented under API and CLI Reference. |
+| Specific TxLINE endpoints integrated | Covered below | The implemented endpoint list is documented under API and CLI Reference; live use is not claimed without a credential-backed run. |
 | Feedback on TxLINE API | Drafted with an evidence boundary | `TXLINE_FEEDBACK.md` covers contract-level experience and states plainly that live behaviour is still unknown. Add a dated live-run addendum after credentials are supplied. |
 | Live TxLINE as an input | Blocking for final eligibility | Add `TXLINE_API_TOKEN`, run live preflight, connect one covered fixture and record redacted observations. |
 
-Submission timing from the supplied brief: submissions close on **19 July 2026 at 23:59 UTC**. The same timestamp is listed as the end of the waived commercial-data-fee access window. Plan the live credential test and video capture before that deadline.
+Submission timing from the supplied brief: submissions close on **19 July 2026 at 23:59 UTC**. The same timestamp is listed as the end of the waived commercial-data-fee access window. Complete the live credential test and any resulting evidence update before that deadline.
 
 Sponsor resources from the supplied brief:
 
@@ -210,7 +210,7 @@ The main demo flow is:
 5. Request proof evidence, noting that synthetic runs remain unverified.
 6. Export the evidence pack or synthetic public summary.
 
-The repository includes a 1200×630 submission social card at `public/og-submission.png`. The required public demo video remains a separate submission artefact.
+The repository includes a 1200×630 submission social card at `public/og-submission.png`. The published 4-minute-49-second demo video is available at <https://youtu.be/mQ84gAyAx9s>.
 
 The complete sub-five-minute narration and shot list are in [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md).
 
@@ -265,7 +265,7 @@ Latest local validation passed with `132/132` tests. The production build still 
 - Add activated TxLINE token and complete one genuine fixture, odds and score-stream run.
 - Validate a genuine score proof against its matching posted daily root, or state that verification remains unconfigured.
 - Confirm London and global submission mechanics with organisers.
-- Add a public demo video and screenshots.
+- Keep the published demo video and submission screenshots aligned with the deployed build.
 - Keep the public repository and deployed judging URL aligned with the final submission.
 - Add final TxLINE API feedback after the first live run.
 - Confirm sponsor permission before publishing any TxLINE-derived summary.
@@ -281,6 +281,6 @@ No open-source licence has been granted. Copyright and reuse rights remain reser
 
 ## Contact or Support
 
-Use the public repository’s issue tracker for project questions once the repository link is published.
+Use the [public repository issue tracker](https://github.com/MasteraSnackin/proofswitch/issues) for project questions.
 
 For TxLINE access or sponsor data questions, use the official sponsor and organiser channels. Do not share API tokens, guest JWTs, private traces or licensed payloads in public support channels.

@@ -183,7 +183,7 @@ The app exposes UI status, preflight results, evidence previews, audit logs and 
 
 - Add a genuine TxLINE run record once sponsor access is issued.
 - Add verified Solana proof evidence for a real fixture and sequence.
-- Add deployment and public demo video if required by submission rules.
+- Keep the deployment, judge pack and published demo video aligned with the final revision.
 - Add centralised request IDs and structured provider diagnostics.
 - Add shared rate limits and stream fan-out for production usage.
 - Add explicit sponsor-approved derived-data publication policy.

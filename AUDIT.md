@@ -16,6 +16,7 @@
 - The live control room now includes judge mode, live preflight, setup wizard, trading-agent scorecard, sponsor evidence and a fixture timeline.
 - Live claims are guarded: synthetic data is labelled, TxLINE-derived public summary export is blocked, and Solana verification is not claimed without runtime proof.
 - Paper execution has visible risk state, deterministic fills, maximum-liability controls and emergency stop.
+- The public repository, deployed application, judge pack and 4-minute-49-second demo video are published and linked.
 - Local validation is strong: build, lint, typecheck and `132/132` tests pass.
 
 ## Critical Issues
@@ -26,8 +27,7 @@
 
 - [P2] No real browser visual sweep was performed in this turn. Impact: CSS regressions that only appear at exact viewport sizes may remain. Fix: run desktop and mobile visual QA before final public submission.
 - [P2] No genuine TxLINE traffic has been observed. Impact: live sponsor integration remains credential-ready rather than proven end to end. Fix: run the preflight and one genuine fixture session after credentials are issued.
-- [P2] Demo video, public repo and deployed access are not recorded in the repository. Impact: the submission would not pass the stated screening checklist yet. Fix: publish the repo, deploy the app or API, and record a five-minute walkthrough before submission.
-- [P3] No public screenshots are committed beyond the Open Graph image. Impact: repository reviewers may need to run the app locally. Fix: add two screenshots or a short demo video before submission if required.
+- [P3] No public screenshots are committed beyond the Open Graph image. Impact: repository reviewers who do not watch the published demo video may need to open the deployment. Fix: add two screenshots if useful.
 
 ## Missing States
 
@@ -40,12 +40,11 @@
 
 1. Add credentials and run live preflight.
 2. Capture one genuine TxLINE fixture session and update `BUILD_LOG.md`.
-3. Deploy the app or expose a functional judging API endpoint.
-4. Publish the cleaned public repository.
-5. Record the required demo video and add TxLINE API feedback.
-6. Perform desktop and mobile browser QA.
-7. Add screenshots if useful for the public repo.
+3. Add a dated live-run addendum to the TxLINE feedback.
+4. Confirm London and global submission mechanics with organisers.
+5. Perform desktop and mobile browser QA.
+6. Add screenshots if useful for the public repository.
 
 ## Final Verdict
 
-Ready with caveats. It is ready as a local, credential-free hackathon demo and credential-ready live prototype. It is not yet a proven live TxLINE or Solana-verified production application.
+Ready with caveats. It is a deployed, working synthetic hackathon application and credential-ready live prototype. It is not yet a proven live TxLINE or Solana-verified production application.
