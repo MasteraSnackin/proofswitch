@@ -131,18 +131,56 @@ Sponsor resources from the supplied brief:
 
 ```mermaid
 flowchart LR
-  Operator[Operator or judge] --> UI[Demo Lab and Live Control Room]
-  UI --> API[Local API routes]
-  Agent[Headless agent] --> API
-  API --> Synthetic[Synthetic fixture and SSE]
-  API --> TxLINE[TxLINE API, when configured]
-  API --> Engine[Deterministic risk reducer]
-  Engine --> Paper[Paper orders, fills and risk ledger]
-  Engine --> Evidence[Unsigned evidence exports]
-  Evidence --> Solana[Optional read-only Solana validation]
+  Operator["Judge or automation operator"]
+  Browser["Browser application"]
+  CLI["Headless CLI"]
+  API["Same-origin API gateway"]
+  Mode{"Server-selected source"}
+  Synthetic["Synthetic adapter"]
+  TxLINE["TxLINE API"]
+  Reducer["Shared deterministic live reducer"]
+  Paper["Paper orders, fills, risk and audit"]
+  BrowserStore[("Browser localStorage")]
+  Downloads[("Local browser JSON downloads")]
+  PrivateFiles[("Private CLI report and optional trace")]
+  Proof["Proof boundary"]
+  Solana["Optional read-only Solana view"]
+
+  Operator --> Browser
+  Operator --> CLI
+  Browser <-->|"HTTPS JSON and SSE"| API
+  CLI <-->|"HTTPS JSON and SSE"| API
+  API --> Mode
+  Mode -->|"public judge mode"| Synthetic
+  Mode -.->|"configured live mode"| TxLINE
+  Browser -->|"runs locally"| Reducer
+  CLI -->|"runs locally"| Reducer
+  Reducer --> Paper
+  Browser --> BrowserStore
+  Browser --> Downloads
+  CLI --> PrivateFiles
+  API --> Proof
+  Proof -.-> TxLINE
+  Proof -.-> Solana
 ```
 
-The UI and headless runner both feed the same risk reducer. Synthetic mode is credential-free; live mode keeps TxLINE credentials server-side and fails closed instead of substituting synthetic data. Evidence exports are local, unsigned artefacts and are separate from Solana verification.
+ProofSwitch is a client/CLI-hosted deterministic paper-risk agent behind a same-origin server gateway. The gateway protects credentials, selects the configured source and normalises JSON/SSE data; it does not run the strategy or own the paper ledger. The Live Control Room and headless CLI each run the shared live reducer locally. Demo Lab uses a separate deterministic scenario reducer.
+
+Synthetic mode is credential-free. Live mode is selected only by server configuration and fails closed instead of silently substituting synthetic data. Browser live sessions stay in localStorage, while evidence is created as an explicit local JSON download. Every headless CLI run writes a private local report and writes a canonical trace only when requested. The proof path is server-side and separate from evidence generation, and it never submits a Solana transaction.
+
+The complete [system architecture](./ARCHITECTURE.md) contains the requested C4-model views and operational diagrams:
+
+| View | Documentation |
+| --- | --- |
+| C1: system context | [People, ProofSwitch and external systems](./ARCHITECTURE.md#c1-system-context) |
+| C2: containers | [Browser, API, CLI, stores and providers](./ARCHITECTURE.md#c2-containers) |
+| C3: components | [UI, adapters, reducers and proof boundary](./ARCHITECTURE.md#c3-components) |
+| C4: code | [Reducer events, processors, guards and selectors](./ARCHITECTURE.md#c4-code-level-reducer-view) |
+| Data-flow diagram | [Trust zones, processes, stores and data movement](./ARCHITECTURE.md#data-flow-diagram-dfd-level-1) |
+| Runtime sequences | [Autonomous browser session](./ARCHITECTURE.md#autonomous-session-sequence) and [proof validation](./ARCHITECTURE.md#proof-validation-sequence) |
+| State model | [Quote-protection state machine](./ARCHITECTURE.md#quote-protection-state-machine) |
+| Data model | [Logical entity relationships](./ARCHITECTURE.md#logical-data-model) |
+| Deployment | [Current Vercel production shape](./ARCHITECTURE.md#current-production-deployment) |
 
 ## Installation
 
