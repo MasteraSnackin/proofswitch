@@ -12,6 +12,12 @@ Trading Tools and Agents
 
 ProofSwitch is an autonomous in-play circuit breaker that detects World Cup odds shocks and stale feeds, withdraws unsafe paper quotes, and reopens only after deterministic recovery evidence.
 
+## Briefly explain your project
+
+ProofSwitch is an autonomous paper-trading risk operator for volatile World Cup markets. It consumes fixture, odds, score and stream-health signals, detects consensus shocks or stale transport, withdraws every unsafe paper quote, and reopens only after score confirmation, fresh data, a minimum hold and three stable observations all pass. The working application includes a guided goal-shock walkthrough, outlier and stale-feed tests, a production-path rehearsal, an inspectable decision timeline and machine-readable evidence.
+
+The TxLINE integration implements guest authentication, fixture discovery, odds and score snapshots, both server-sent-event streams and the stat-validation endpoint behind a server-only credential boundary. Live mode fails closed when credentials are absent; the public judge deployment is therefore clearly labelled as synthetic and paper-only and does not claim a credential-backed TxLINE session or successful Solana verification. This gives judges a functional application now while keeping the sponsor-data and proof boundaries honest.
+
 ## Demo video
 
 <https://youtu.be/0uxTKx0Jf0Q> — 4 minutes 48 seconds
