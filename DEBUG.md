@@ -25,7 +25,7 @@ That keeps preflight output aligned with the actual server mode and preserves th
 - Result: passed.
 - Command: `npm test`
 - Result: production build passed and `133/133` tests passed.
-- Browser check: not performed in this turn; Sites workflow did not require browser interaction and the user did not request visual browser QA.
+- Production browser check: the guided `?judge=1` route reached its cancellation checkpoint automatically, the judge pack exposed all five screening artefacts, and neither page overflowed at the tested 1280px viewport.
 
 ## Residual Risk
 

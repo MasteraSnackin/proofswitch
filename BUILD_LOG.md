@@ -100,9 +100,10 @@ live-readiness additions:
   at their current registry versions; no forced downgrade or incompatible
   transitive override was applied.
 
-The production build emits a non-fatal bundler warning from Anchor's ESM entry.
-This does not establish that the read-only Solana runtime works against a live
-RPC; the genuine validation record above remains pending.
+The Anchor runtime now uses its explicit CommonJS entry and the focused runtime
+tests pass under both Node 22 and Node 24. This does not establish that the
+read-only Solana runtime works against a live RPC; the genuine validation record
+above remains pending.
 
 ## Public submission artefacts as at 19 July 2026
 

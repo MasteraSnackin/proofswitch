@@ -37,7 +37,7 @@
 
 - Live TxLINE traffic is not tested because no sponsor token is configured.
 - Solana validation remains unverified until a genuine proof and public simulation payer are configured.
-- No deployment has been completed in this pass.
+- The updated application and judge pack are deployed at <https://proofswitch.vercel.app>.
 
 ## Recommended Next Step
 

@@ -274,7 +274,7 @@ npm run typecheck
 npm test
 ```
 
-Latest local validation passed with `133/133` tests. The production build still emits a known non-fatal Anchor ESM/CommonJS warning; it does not prove that a genuine live Solana validation run has happened.
+Latest local validation passed with `133/133` tests. The Anchor runtime uses its explicit CommonJS entry so Node 22 and Node 24 execute the same exports. Passing tests still do not prove that a genuine live Solana validation run has happened.
 
 ## Roadmap
 

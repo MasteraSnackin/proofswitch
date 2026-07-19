@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { BorshInstructionCoder } from "@coral-xyz/anchor";
-import { convertIdlToCamelCase } from "@coral-xyz/anchor/dist/cjs/idl.js";
+import anchor from "@coral-xyz/anchor/dist/cjs/index.js";
+import anchorIdl from "@coral-xyz/anchor/dist/cjs/idl.js";
 
 import { readServerConfig } from "../server/config.ts";
 import {
@@ -11,6 +11,9 @@ import {
 } from "../server/solana-runtime.ts";
 import type { NormalisedScoreProof } from "../server/verification.ts";
 import { txoracleValidationIdl } from "../server/txoracle-idl.ts";
+
+const { BorshInstructionCoder } = anchor;
+const { convertIdlToCamelCase } = anchorIdl;
 
 const bytes = Array.from({ length: 32 }, (_, index) => index);
 

@@ -1,17 +1,14 @@
-import {
-  AnchorError,
-  AnchorProvider,
-  BN,
-  Program,
-  web3,
-  type Idl,
-} from "@coral-xyz/anchor";
+import anchor from "@coral-xyz/anchor/dist/cjs/index.js";
+import type { Idl } from "@coral-xyz/anchor";
 import type { ServerConfig } from "./config.ts";
 import type { NormalisedScoreProof } from "./verification.ts";
 import {
   TXORACLE_DEVNET_PROGRAM_ID,
   txoracleValidationIdl,
 } from "./txoracle-idl.ts";
+
+const { AnchorError, AnchorProvider, BN, Program, web3 } = anchor;
+type AnchorBN = InstanceType<typeof BN>;
 
 const ROOT_PENDING_CODES = new Set([6007]);
 const INVALID_PROOF_CODES = new Set([
@@ -38,13 +35,13 @@ export interface SolanaValidationResult {
 
 export interface CompiledStatValidation {
   payload: {
-    ts: BN;
+    ts: AnchorBN;
     fixtureSummary: {
-      fixtureId: BN;
+      fixtureId: AnchorBN;
       updateStats: {
         updateCount: number;
-        minTimestamp: BN;
-        maxTimestamp: BN;
+        minTimestamp: AnchorBN;
+        maxTimestamp: AnchorBN;
       };
       eventsSubTreeRoot: number[];
     };
