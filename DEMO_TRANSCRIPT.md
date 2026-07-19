@@ -1,6 +1,6 @@
 # ProofSwitch — Published Demo Transcript
 
-Video: <https://youtu.be/0uxTKx0Jf0Q>
+Video: <https://youtu.be/5bsx35tDo-g>
 
 Published duration: 4 minutes 48 seconds
 

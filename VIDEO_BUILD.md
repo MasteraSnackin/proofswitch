@@ -1,39 +1,28 @@
 # Demo video build record
 
-Published video: <https://youtu.be/0uxTKx0Jf0Q>
+Published video: <https://youtu.be/5bsx35tDo-g>
 
 Published length: 4 minutes 48 seconds
 
-Local master SHA-256: `87bf652b3feb3a7d26283fd280bfcc82a71c499e57b61a037f5d7c959ee28561`
+Local master SHA-256: `c4300ccea39cf67f7bd3a20f7ddbd3a3b432170f9a19dfa37e2dad32a380ced6`
 
 ## Source of truth
 
 - [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md) contains the exact narration.
 - [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md) contains the judge-facing timeline and shot list.
-- `work/demo-video/slideshow.txt` contains the local image sequence and durations.
-- `work/demo-video/proofswitch-demo-v3.mp4` is the uploaded 1920×1080 master.
+- `work/demo-video/proofswitch-screen-v4.mp4` is the uploaded 1280×720 continuous screen-capture master.
 
 The `work/` directory is intentionally excluded from Git because it contains large generated media. No credential or sponsor data is required to rebuild the video. The current public narration uses a local macOS speech voice; no third-party voice credential is stored in the repository.
 
-## Rebuild
+## Version 4 capture
 
-From the repository root, with FFmpeg installed:
+Version 4 replaces the earlier slideshow-style render with a continuous screen capture of the working application. It retains the exact published narration and keeps the public run clearly described as a synthetic, paper-only rehearsal. It does not claim a credential-backed TxLINE session or successful Solana verification.
 
-```bash
-ffmpeg -y \
-  -f concat -safe 0 -i work/demo-video/slideshow.txt \
-  -i work/demo-video/narration.aiff \
-  -filter_complex "[0:v]fps=30,format=yuv420p[v];[1:a]loudnorm=I=-16:LRA=11:TP=-1.5[a]" \
-  -map "[v]" -map "[a]" \
-  -c:v libx264 -preset medium -crf 18 \
-  -c:a aac -b:a 192k -ar 44100 -ac 1 \
-  -shortest -movflags +faststart \
-  work/demo-video/proofswitch-demo-v3.mp4
-```
+The v4 master is the source artefact for the published upload. The exact capture and assembly command was not recorded in the repository, so the verified SHA-256 above, rather than an inferred rebuild command, identifies the uploaded local master.
 
 ## Verified output
 
-- Video: H.264, 1920×1080, 30 fps.
+- Video: H.264, 1280×720, 30 fps.
 - Audio: AAC, mono, 44.1 kHz, normalised towards −16 LUFS.
 - Container duration: 287.700 seconds.
 - YouTube copyright check: complete, no issues found.
