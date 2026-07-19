@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
+  publicJudgeEndpoints,
   submissionLinks,
-  syntheticJudgeFixtureId,
   txlineEndpoints,
 } from "../../lib/submission";
 
@@ -19,7 +19,89 @@ const videoRunSheet = [
   ["0:55–2:20", "Working app", "Run the goal-shock walkthrough: detect, cancel, hold, stabilise and reopen."],
   ["2:20–3:35", "TxLINE backend", "Show the fixture, snapshot and SSE adapters around the production reducer; identify the recording as a synthetic rehearsal rather than a credential-backed session."],
   ["3:35–4:20", "Evidence", "Review the scorecard, audit trail, paper execution and guarded Solana boundary."],
-  ["4:20–4:49", "Close", "Explain the business value, Trading Tools and Agents fit, public app and repository."],
+  ["4:20–4:48", "Close", "Explain the business value, Trading Tools and Agents fit, public app and repository."],
+] as const;
+
+const screeningRequirements = [
+  {
+    title: "Demo video",
+    evidence: "Published · 4:48",
+    detail: "Problem, working product, backend path and evidence boundary.",
+    href: submissionLinks.demoVideo,
+  },
+  {
+    title: "Public repository",
+    evidence: "Published",
+    detail: "Source, architecture, tests and safety documentation.",
+    href: submissionLinks.repository,
+  },
+  {
+    title: "Application access",
+    evidence: "Working deployment",
+    detail: "Interactive agent, JSON endpoints and resumable synthetic SSE.",
+    href: submissionLinks.application,
+  },
+  {
+    title: "Technical documentation",
+    evidence: "Complete",
+    detail: "Core idea, business case, architecture and exact endpoint mapping.",
+    href: "#technical-overview",
+  },
+  {
+    title: "TxLINE feedback",
+    evidence: "Complete with boundary",
+    detail: "What worked, friction and the observations still unknown before live access.",
+    href: "#txline-feedback",
+  },
+] as const;
+
+const judgePath = [
+  {
+    step: "01",
+    title: "Watch the complete demo",
+    detail: "4 minutes 48 seconds",
+    href: submissionLinks.demoVideo,
+    action: "Play video",
+  },
+  {
+    step: "02",
+    title: "Run the autonomous scenario",
+    detail: "About 90 seconds · two evidence checkpoints",
+    href: "/?judge=1",
+    action: "Start walkthrough",
+  },
+  {
+    step: "03",
+    title: "Inspect source and contracts",
+    detail: "Public repository plus machine-readable manifest",
+    href: "/api/submission",
+    action: "Open manifest",
+  },
+] as const;
+
+const trackEvidence = [
+  {
+    verb: "Ingest",
+    title: "TxLINE-shaped odds and scores",
+    detail: "Fixture discovery, snapshot bootstrap and two SSE streams feed one normalised event contract.",
+  },
+  {
+    verb: "Detect",
+    title: "Material trading signals",
+    detail: "Consensus movement, score confirmation and stale transport are evaluated by a deterministic risk policy.",
+  },
+  {
+    verb: "Execute",
+    title: "Autonomous paper decisions",
+    detail: "The agent cancels every unsafe quote, holds, reprices and reopens only after recovery gates pass.",
+  },
+] as const;
+
+const strategyMetrics = [
+  ["≥4 pp", "Consensus-shock threshold"],
+  ["6", "Paper quotes cancelled on breach"],
+  ["3", "Stable observations before recovery"],
+  ["Fail closed", "When live credentials are absent"],
 ] as const;
 
 function ArtifactLink({
@@ -35,13 +117,6 @@ function ArtifactLink({
 }
 
 export default function SubmissionPage() {
-  const judgeApiLinks = [
-    ["Runtime status", "/api/status"],
-    ["Synthetic fixtures", "/api/fixtures"],
-    ["Synthetic odds", `/api/odds?fixtureId=${syntheticJudgeFixtureId}`],
-    ["Synthetic score", `/api/scores?fixtureId=${syntheticJudgeFixtureId}`],
-  ] as const;
-
   return (
     <main className="submission-shell">
       <nav className="submission-nav" aria-label="Submission navigation">
@@ -64,13 +139,95 @@ export default function SubmissionPage() {
             quotes, then reopens only after deterministic recovery evidence. It is built for the
             Trading Tools and Agents track and the London local judging context.
           </p>
+          <div className="submission-hero-actions" aria-label="Primary submission actions">
+            <Link className="button primary" href="/?judge=1">Run 90-second walkthrough</Link>
+            <a className="button secondary" href={submissionLinks.demoVideo} target="_blank" rel="noreferrer">
+              Watch 4:48 demo
+            </a>
+            <a className="button quiet" href={submissionLinks.repository} target="_blank" rel="noreferrer">
+              View source
+            </a>
+          </div>
         </div>
         <div className="submission-status-stack" aria-label="Submission status">
-          <span className="status-chip track-primary">Working application</span>
+          <span className="status-chip track-primary">5/5 screening artefacts ready</span>
+          <span className="status-chip world-cup">Primary track · Trading agents</span>
           <span className="status-chip synthetic">Synthetic judge mode</span>
-          <span className="status-chip disconnected">Live token not configured</span>
+          <span className="status-chip disconnected">Live TxLINE evidence pending</span>
         </div>
       </header>
+
+      <section className="panel submission-video" aria-labelledby="demo-video-title">
+        <div className="submission-video-copy">
+          <p className="eyebrow">Primary screening evidence · 4:48</p>
+          <h2 id="demo-video-title">Problem, working agent and TxLINE backend path</h2>
+          <p>
+            The demonstration covers the market-risk problem, an autonomous goal-shock run,
+            deterministic reopening, the production-path rehearsal and the exact TxLINE integration
+            boundary.
+          </p>
+          <p className="submission-boundary">
+            The recorded run is explicitly synthetic and paper-only. It demonstrates working product
+            behaviour without misrepresenting it as a credential-backed TxLINE session.
+          </p>
+          <ArtifactLink href={submissionLinks.demoVideo}>Open video on YouTube</ArtifactLink>
+        </div>
+        <div className="submission-video-frame">
+          <iframe
+            src={submissionLinks.demoVideoEmbed}
+            title="ProofSwitch hackathon demo video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      </section>
+
+      <section className="submission-screening-grid">
+        <article className="panel submission-section submission-screening" aria-labelledby="screening-title">
+          <div className="submission-section-heading">
+            <div>
+              <p className="eyebrow">Initial screening</p>
+              <h2 id="screening-title">Every required artefact is public</h2>
+            </div>
+            <div className="submission-score" aria-label="Five of five artefacts ready">
+              <strong>5/5</strong>
+              <span>ready</span>
+            </div>
+          </div>
+          <ul className="submission-checklist">
+            {screeningRequirements.map((item) => (
+              <li key={item.title}>
+                <span className="submission-check" aria-hidden="true">Ready</span>
+                <div><strong>{item.title}</strong><p>{item.detail}</p></div>
+                <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                  {item.evidence}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="panel submission-section submission-judge-path" aria-labelledby="judge-path-title">
+          <p className="eyebrow">Fast judge path</p>
+          <h2 id="judge-path-title">Understand and test ProofSwitch in under seven minutes</h2>
+          <ol>
+            {judgePath.map((item) => (
+              <li key={item.step}>
+                <span className="mono">{item.step}</span>
+                <div><strong>{item.title}</strong><p>{item.detail}</p></div>
+                <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                  {item.action}
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p className="submission-boundary">
+            Sponsor eligibility still requires one genuine fixture, odds and score-stream run after
+            an activated TxLINE token is supplied.
+          </p>
+        </article>
+      </section>
 
       <section className="submission-artifacts" aria-label="Submission links">
         <article className="panel submission-artifact ready">
@@ -109,8 +266,11 @@ export default function SubmissionPage() {
           <p className="eyebrow">What judges can test now</p>
           <h2>Working UI and functional synthetic API</h2>
           <ul className="submission-link-list">
-            {judgeApiLinks.map(([label, href]) => (
-              <li key={href}><a href={href} target="_blank" rel="noreferrer">{label}</a><code>{href}</code></li>
+            {publicJudgeEndpoints.map(({ label, path, purpose }) => (
+              <li key={path}>
+                <a href={path} target="_blank" rel="noreferrer">{label}</a>
+                <div><code>{path}</code><small>{purpose}</small></div>
+              </li>
             ))}
           </ul>
           <p className="submission-boundary">
@@ -120,7 +280,32 @@ export default function SubmissionPage() {
         </article>
       </section>
 
-      <section className="panel submission-section">
+      <section className="panel submission-section" aria-labelledby="track-fit-title">
+        <p className="eyebrow">Primary track evidence</p>
+        <h2 id="track-fit-title">Ingest signals, detect risk, execute decisions</h2>
+        <div className="submission-track-evidence">
+          {trackEvidence.map((item) => (
+            <article key={item.verb}>
+              <span>{item.verb}</span>
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <p className="submission-novelty">
+          <strong>Novelty:</strong> ProofSwitch treats safe recovery as a first-class autonomous
+          decision. Detecting a shock is only the start; the market remains withdrawn until score
+          confirmation, transport freshness, a minimum hold and stable consensus evidence all agree.
+        </p>
+      </section>
+
+      <section className="submission-metrics" aria-label="Deterministic demonstration policy">
+        {strategyMetrics.map(([value, label]) => (
+          <article className="panel" key={label}><strong>{value}</strong><span>{label}</span></article>
+        ))}
+      </section>
+
+      <section className="panel submission-section" id="technical-overview">
         <p className="eyebrow">Technical highlights</p>
         <h2>One guarded strategy path from data to paper execution</h2>
         <ul className="submission-highlight-list">
@@ -128,7 +313,7 @@ export default function SubmissionPage() {
         </ul>
       </section>
 
-      <section className="panel submission-section">
+      <section className="panel submission-section" id="txline-integration">
         <p className="eyebrow">TxLINE integration</p>
         <h2>Integrated upstream endpoints</h2>
         <p className="submission-intro">
@@ -136,7 +321,7 @@ export default function SubmissionPage() {
           credential-ready; “used live” must not be claimed until a sponsor token is supplied and a
           genuine session is recorded.
         </p>
-        <div className="submission-table-wrap">
+        <div className="submission-table-wrap" role="region" aria-label="Integrated TxLINE endpoint table" tabIndex={0}>
           <table className="submission-table">
             <thead><tr><th>Method</th><th>Endpoint</th><th>Purpose</th></tr></thead>
             <tbody>
@@ -153,12 +338,13 @@ export default function SubmissionPage() {
       </section>
 
       <section className="submission-grid">
-        <article className="panel submission-section">
+        <article className="panel submission-section" id="txline-feedback">
           <p className="eyebrow">TxLINE API feedback</p>
           <h2>Pre-credential integration experience</h2>
           <p>
-            We liked the separation between initial snapshots and SSE updates, the normalised fixture,
-            odds and score families, and StablePrice consensus values that map cleanly into a shock policy.
+            The integration design benefits from the separation between initial snapshots and SSE
+            updates, the normalised fixture, odds and score families, and StablePrice consensus values
+            that map cleanly into a shock policy.
             The same normalised contract lets the synthetic production-path rehearsal exercise the
             intended live reducer without being represented as genuine TxLINE traffic.
           </p>
@@ -189,7 +375,7 @@ export default function SubmissionPage() {
       <section className="panel submission-decision">
         <div>
           <p className="eyebrow">Evidence boundary</p>
-          <h2>Working submission, with one sponsor dependency still unresolved</h2>
+            <h2>Working synthetic system — live-input eligibility blocked</h2>
           <p>
             The UI, synthetic API, strategy engine, paper execution, documentation and tests work now.
             Final sponsor eligibility still depends on receiving a TxLINE token and recording at least

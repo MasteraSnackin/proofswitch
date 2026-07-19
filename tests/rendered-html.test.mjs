@@ -38,6 +38,8 @@ test("server-renders the ProofSwitch prototype", async () => {
   assert.match(html, /Pacifica/i);
   assert.match(html, /Run replay/i);
   assert.match(html, /Start 90-second judge walkthrough/i);
+  assert.match(html, /Autonomous protection for volatile World Cup markets/i);
+  assert.match(html, /Watch 4:48 demo/i);
   assert.match(html, /Live control room/i);
   assert.match(html, /Primary track: Trading Tools and Agents/i);
   assert.match(html, /Primary submission track/i);
@@ -91,10 +93,17 @@ test("keeps the application deterministic and integration boundaries explicit", 
   assert.match(submissionPage, /Pre-credential integration experience/);
   assert.match(submissionPage, /No credential-backed TxLINE call has been made/);
   assert.match(submissionPage, /Complete in under five minutes/);
+  assert.match(submissionPage, /Every required artefact is public/);
+  assert.match(submissionPage, /Understand and test ProofSwitch in under seven minutes/);
+  assert.match(submissionPage, /Ingest signals, detect risk, execute decisions/);
+  assert.match(submissionPage, /safe recovery as a first-class autonomous/i);
   assert.match(submissionConfig, /\/api\/fixtures\/snapshot/);
+  assert.match(submissionConfig, /\/api\/submission/);
+  assert.match(submissionConfig, /kind=odds/);
+  assert.match(submissionConfig, /kind=scores/);
   assert.match(submissionConfig, /\/api\/scores\/stat-validation/);
   assert.match(submissionConfig, /https:\/\/github\.com\/MasteraSnackin\/proofswitch/);
-  assert.match(submissionConfig, /https:\/\/youtu\.be\/mQ84gAyAx9s/);
+  assert.match(submissionConfig, /https:\/\/youtu\.be\/0uxTKx0Jf0Q/);
   assert.match(page, /Start 90-second judge walkthrough/);
   assert.match(page, /Open production-path rehearsal/);
   assert.match(page, /Latest material decision/);
@@ -104,7 +113,7 @@ test("keeps the application deterministic and integration boundaries explicit", 
   assert.match(page, /nextCursor === 10/);
   assert.match(page, /No TxLINE claim/);
   assert.match(page, /No Solana verification claim/);
-  assert.match(styles, /\.header-status\s*\{[\s\S]*position:\s*fixed/);
+  assert.match(styles, /\.header-status\s*\{[\s\S]*position:\s*static/);
   assert.match(styles, /\.audit-row \.source\s*\{\s*display:\s*inline-flex/);
   assert.match(page, /Awaiting credentials/);
   assert.match(page, /validateStatV2/);
@@ -154,6 +163,22 @@ test("keeps the application deterministic and integration boundaries explicit", 
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
+});
+
+test("publishes a machine-readable submission manifest with honest boundaries", async () => {
+  const response = await request("/api/submission", { accept: "application/json" });
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("cache-control") ?? "", /no-store/i);
+  const manifest = await response.json();
+  assert.equal(manifest.schema, "proofswitch.submission.v1");
+  assert.equal(manifest.primaryTrack, "Trading Tools and Agents");
+  assert.equal(manifest.status.screeningArtefacts, "complete");
+  assert.equal(manifest.status.application, "working_synthetic_agent");
+  assert.equal(manifest.status.txlineCredentialRun, "pending_sponsor_token");
+  assert.equal(manifest.screeningRequirements.length, 5);
+  assert.equal(manifest.publicJudgeEndpoints.some((entry) => entry.path.includes("kind=odds")), true);
+  assert.equal(manifest.publicJudgeEndpoints.some((entry) => entry.path.includes("kind=scores")), true);
+  assert.match(manifest.evidenceBoundary, /genuine live TxLINE evidence remains pending/i);
 });
 
 test("serves safe synthetic APIs and an explicit unconfigured proof boundary", async () => {

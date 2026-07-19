@@ -24,7 +24,7 @@ That keeps preflight output aligned with the actual server mode and preserves th
 - Command: `node --test tests/rendered-html.test.mjs`
 - Result: passed.
 - Command: `npm test`
-- Result: production build passed and `132/132` tests passed.
+- Result: production build passed and `133/133` tests passed.
 - Browser check: not performed in this turn; Sites workflow did not require browser interaction and the user did not request visual browser QA.
 
 ## Residual Risk

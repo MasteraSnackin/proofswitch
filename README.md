@@ -1,5 +1,9 @@
 # ProofSwitch
 
+[![Submission checks](https://github.com/MasteraSnackin/proofswitch/actions/workflows/ci.yml/badge.svg)](https://github.com/MasteraSnackin/proofswitch/actions/workflows/ci.yml)
+
+[Live application](https://proofswitch.vercel.app) · [90-second judge walkthrough](https://proofswitch.vercel.app/?judge=1) · [4:48 demo video](https://youtu.be/0uxTKx0Jf0Q) · [Judge pack](https://proofswitch.vercel.app/submission) · [Submission manifest](https://proofswitch.vercel.app/api/submission)
+
 Local-first World Cup in-play risk operator for the TxOdds x Solana hackathon.
 
 ## Description
@@ -16,7 +20,19 @@ The project is built for the global Trading Tools and Agents track and the Londo
 - **Commercial path:** connect the protected command layer to an execution venue after compliance, risk and reliability review.
 - **Current boundary:** paper execution only; no real orders and no consumer betting.
 
-The complete judge-facing wording, endpoint mapping and evidence boundaries are in [`SUBMISSION.md`](./SUBMISSION.md). The deployed app also exposes the same material at `/submission`.
+The complete judge-facing wording, endpoint mapping and evidence boundaries are in [`SUBMISSION.md`](./SUBMISSION.md). [`SUBMISSION_FORM.md`](./SUBMISSION_FORM.md) contains a copy-ready organiser form response. The deployed app also exposes the judge pack at `/submission`.
+
+## Judge Quick Start
+
+1. Watch the [4-minute-48-second demo](https://youtu.be/0uxTKx0Jf0Q).
+2. Launch the [guided autonomous scenario](https://proofswitch.vercel.app/?judge=1) and continue through its cancellation and recovery checkpoints.
+3. Inspect the [machine-readable submission manifest](https://proofswitch.vercel.app/api/submission), public endpoints and source.
+
+The public build is a working synthetic paper-trading agent. A genuine TxLINE fixture and odds/score-stream run remains pending an activated sponsor token and is not claimed here.
+
+| Autonomous cancellation checkpoint | Trading-agent scorecard |
+| --- | --- |
+| ![ProofSwitch cancelling six unsafe paper quotes after a consensus shock](docs/screenshots/autonomous-cancellation.png) | ![ProofSwitch trading-agent scorecard and protected paper quotes](docs/screenshots/trading-scorecard.png) |
 
 ## Submission Track Fit
 
@@ -48,7 +64,7 @@ ProofSwitch is designed to cover the Trading Tools and Agents brief: a running a
 
 | Requirement | Status | Notes |
 | --- | --- | --- |
-| Demo video up to five minutes | Published and verified | <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds, covering the problem, deployed app, agent controls, production-path rehearsal and TxLINE integration boundary. |
+| Demo video up to five minutes | Published and verified | <https://youtu.be/0uxTKx0Jf0Q> — 4 minutes 48 seconds, covering the problem, deployed app, agent controls, production-path rehearsal and TxLINE integration boundary. |
 | Public repo | Published | <https://github.com/MasteraSnackin/proofswitch> |
 | Working deployed website or functional API/devnet endpoint | Published and verified | <https://proofswitch.vercel.app> with judge pack at <https://proofswitch.vercel.app/submission>. |
 | Brief technical documentation | Covered | README, `ARCHITECTURE.md`, reports and endpoint list cover the core idea and implementation. |
@@ -210,9 +226,9 @@ The main demo flow is:
 5. Request proof evidence, noting that synthetic runs remain unverified.
 6. Export the evidence pack or synthetic public summary.
 
-The repository includes a 1200×630 submission social card at `public/og-submission.png`. The published 4-minute-49-second demo video is available at <https://youtu.be/mQ84gAyAx9s>.
+The repository includes a 1200×630 submission social card at `public/og-submission.png`. The published 4-minute-48-second demo video is available at <https://youtu.be/0uxTKx0Jf0Q>.
 
-The complete sub-five-minute narration and shot list are in [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md).
+The timed outline is in [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md), the exact published narration is in [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md), and the reproducible render notes are in [`VIDEO_BUILD.md`](./VIDEO_BUILD.md).
 
 ## API and CLI Reference
 
@@ -258,7 +274,7 @@ npm run typecheck
 npm test
 ```
 
-Latest local validation passed with `132/132` tests. The production build still emits a known non-fatal Anchor ESM/CommonJS warning; it does not prove that a genuine live Solana validation run has happened.
+Latest local validation passed with `133/133` tests. The production build still emits a known non-fatal Anchor ESM/CommonJS warning; it does not prove that a genuine live Solana validation run has happened.
 
 ## Roadmap
 

@@ -31,7 +31,7 @@
 - `npm run typecheck`: passed.
 - `npm run lint`: passed with no warnings.
 - `node --test tests/rendered-html.test.mjs`: passed.
-- `npm test`: production build passed and `132/132` tests passed.
+- `npm test`: production build passed and `133/133` tests passed.
 
 ## Known Limitations
 

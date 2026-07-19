@@ -1,6 +1,6 @@
 # TxLINE API Feedback
 
-## What worked well
+## What worked well at contract level
 
 The separation between initial snapshots and server-sent event streams gives an agent a clear bootstrap and update model. The normalised fixture, odds and score families reduce provider-specific branching, while StablePrice consensus values map directly into ProofSwitch’s price-shock policy. That structure allowed the project to keep transport adapters separate from the production live reducer.
 

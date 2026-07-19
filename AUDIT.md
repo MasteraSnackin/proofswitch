@@ -16,8 +16,8 @@
 - The live control room now includes judge mode, live preflight, setup wizard, trading-agent scorecard, sponsor evidence and a fixture timeline.
 - Live claims are guarded: synthetic data is labelled, TxLINE-derived public summary export is blocked, and Solana verification is not claimed without runtime proof.
 - Paper execution has visible risk state, deterministic fills, maximum-liability controls and emergency stop.
-- The public repository, deployed application, judge pack and 4-minute-49-second demo video are published and linked.
-- Local validation is strong: build, lint, typecheck and `132/132` tests pass.
+- The public repository, deployed application, judge pack and corrected 4-minute-48-second demo video are published and linked.
+- Local validation is strong: build, lint, typecheck and `133/133` tests pass.
 
 ## Critical Issues
 
@@ -25,9 +25,8 @@
 
 ## Secondary Issues
 
-- [P2] No real browser visual sweep was performed in this turn. Impact: CSS regressions that only appear at exact viewport sizes may remain. Fix: run desktop and mobile visual QA before final public submission.
 - [P2] No genuine TxLINE traffic has been observed. Impact: live sponsor integration remains credential-ready rather than proven end to end. Fix: run the preflight and one genuine fixture session after credentials are issued.
-- [P3] No public screenshots are committed beyond the Open Graph image. Impact: repository reviewers who do not watch the published demo video may need to open the deployment. Fix: add two screenshots if useful.
+- [P3] YouTube custom thumbnails remain unavailable until the channel completes phone verification. Impact: YouTube currently chooses the video thumbnail automatically; submission eligibility is unaffected.
 
 ## Missing States
 
@@ -42,8 +41,7 @@
 2. Capture one genuine TxLINE fixture session and update `BUILD_LOG.md`.
 3. Add a dated live-run addendum to the TxLINE feedback.
 4. Confirm London and global submission mechanics with organisers.
-5. Perform desktop and mobile browser QA.
-6. Add screenshots if useful for the public repository.
+5. Complete YouTube channel verification if a custom thumbnail is wanted.
 
 ## Final Verdict
 

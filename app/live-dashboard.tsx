@@ -1959,7 +1959,7 @@ export default function LiveDashboard({ onSelectDemo }: { onSelectDemo: () => vo
             <p className="brand-subtitle">World Cup in-play risk operator</p>
           </div>
         </div>
-        <div className="header-status" aria-label="Live application status">
+        <div className="header-status" aria-label="Live application status" role="region" tabIndex={0}>
           <span className="status-chip track-primary">Trading Tools and Agents</span>
           <span className="status-chip world-cup">World Cup 2026</span>
           <span className={`status-chip ${liveConfigured ? "connected" : pipelineRehearsal ? "synthetic" : "disconnected"}`}>
@@ -2536,7 +2536,12 @@ export default function LiveDashboard({ onSelectDemo }: { onSelectDemo: () => vo
                     </article>
                   ))}
                 </div>
-                <div className="table-wrap">
+                <div
+                  className="table-wrap"
+                  role="region"
+                  aria-label={pipelineRehearsal ? "Synthetic production-path paper quote book" : "Live TxLINE paper quote book"}
+                  tabIndex={0}
+                >
                   <table className="quote-table">
                     <caption className="sr-only">
                       {pipelineRehearsal ? "Synthetic production-path paper quote book" : "Live TxLINE paper quote book"}

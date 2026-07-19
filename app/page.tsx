@@ -20,6 +20,7 @@ import {
   type Outcome,
 } from "./simulation";
 import LiveDashboard from "./live-dashboard";
+import { submissionLinks } from "../lib/submission";
 
 type ApplicationView = "demo" | "live";
 
@@ -226,14 +227,20 @@ function latestDecisionReceipt(
   return null;
 }
 
-function SyntheticDashboard({ onViewChange }: { onViewChange: (view: ApplicationView) => void }) {
+function SyntheticDashboard({
+  onViewChange,
+  autoStartJudge = false,
+}: {
+  onViewChange: (view: ApplicationView) => void;
+  autoStartJudge?: boolean;
+}) {
   const [engine, setEngine] = useState(createInitialState);
-  const [running, setRunning] = useState(false);
-  const [speed, setSpeed] = useState(1);
+  const [running, setRunning] = useState(autoStartJudge);
+  const [speed, setSpeed] = useState(autoStartJudge ? 4 : 1);
   const [scenarioId, setScenarioId] = useState<DemoScenarioId>("goalShock");
   const [evidenceOpen, setEvidenceOpen] = useState(false);
   const [eventFilter, setEventFilter] = useState<"ALL" | AuditEntry["source"]>("ALL");
-  const [judgeMode, setJudgeMode] = useState(false);
+  const [judgeMode, setJudgeMode] = useState(autoStartJudge);
   const [judgeCheckpoint, setJudgeCheckpoint] = useState<JudgeCheckpoint>("running");
   const [judgeStops, setJudgeStops] = useState({ cancellation: false, recovery: false });
   const evidenceDialogRef = useRef<HTMLDialogElement>(null);
@@ -432,7 +439,7 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
             <p className="brand-subtitle">World Cup in-play risk operator</p>
           </div>
         </div>
-        <div className="header-status" aria-label="Demo application status">
+        <div className="header-status" aria-label="Demo application status" role="region" tabIndex={0}>
           <span className={`status-chip operational-state ${statusTone[engine.status]}`}>
             {statusLabel(engine.status)}
           </span>
@@ -462,15 +469,26 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
 
       <section
         className={`prototype-notice ${judgeMode ? "judge-active" : ""}`}
-        aria-label="Local demonstration boundary"
+        aria-label="Deployed synthetic demonstration"
       >
-        <span className="notice-label">Primary track: Trading Tools and Agents</span>
-        <p id="demo-boundary">
-          Autonomous circuit breaking and safe requoting for in-play markets. This independent
-          local demo uses a deterministic synthetic World Cup fixture. It is not affiliated with
-          a tournament organiser and does not connect to TxLINE, submit Solana transactions or
-          place real orders.
-        </p>
+        <div className="prototype-hero-copy">
+          <span className="notice-label">Primary track: Trading Tools and Agents</span>
+          <h1>Autonomous protection for volatile World Cup markets</h1>
+          <p id="demo-boundary">
+            ProofSwitch detects in-play shocks, withdraws unsafe paper quotes and reopens only after
+            deterministic recovery evidence. This deployed synthetic demo is not affiliated with a
+            tournament organiser and does not connect to TxLINE, submit Solana transactions or place
+            real orders.
+          </p>
+          <div className="prototype-hero-links">
+            <a className="button secondary button-link" href={submissionLinks.demoVideo} target="_blank" rel="noreferrer">
+              Watch 4:48 demo
+            </a>
+            <a className="button quiet button-link" href={submissionLinks.repository} target="_blank" rel="noreferrer">
+              View public source
+            </a>
+          </div>
+        </div>
         <button
           className="button judge-launch"
           onClick={startJudgeMode}
@@ -478,44 +496,6 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
         >
           {judgeMode ? "Restart judge walkthrough" : "Start 90-second judge walkthrough"}
         </button>
-      </section>
-
-      <section className="track-fit-grid" aria-label="Submission track fit">
-        {trackFitCards.map((track) => (
-          <article className={`track-fit-card ${track.tone}`} key={track.title}>
-            <p className="eyebrow">{track.label}</p>
-            <h2>{track.title}</h2>
-            <p>{track.detail}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="panel sponsor-coverage-panel" aria-label="TxLINE sponsor coverage">
-        <div className="panel-heading compact">
-          <div>
-            <p className="eyebrow">TxLINE track coverage</p>
-            <h2>Covers the agent/tool brief, with the live-input gap stated plainly</h2>
-          </div>
-          <span className="status-chip track-primary">Built for autonomous operation</span>
-        </div>
-        <div className="sponsor-coverage-grid">
-          {txlineCoverageCards.map((item) => (
-            <article className="sponsor-coverage-card" key={item.title}>
-              <span>{item.label}</span>
-              <strong>{item.title}</strong>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-        <p className="sponsor-coverage-note">
-          Current status: the deployed application, public repository, demo video, technical pack
-          and synthetic judge modes are available. The mandatory live-input requirement remains
-          blocked until an activated TxLINE API token is configured so the server can obtain a guest
-          JWT and record one genuine fixture, odds and score-stream session.
-        </p>
-        <a className="button secondary button-link sponsor-pack-link" href="/submission">
-          Open technical documentation and submission pack
-        </a>
       </section>
 
       {judgeMode ? (
@@ -771,7 +751,7 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
               ))}
             </div>
 
-            <div className="table-wrap">
+            <div className="table-wrap" role="region" aria-label="Synthetic paper quote book" tabIndex={0}>
               <table className="quote-table">
                 <caption className="sr-only">Synthetic paper quote book</caption>
                 <thead>
@@ -990,6 +970,44 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
         </aside>
       </section>
 
+      <section className="track-fit-grid" aria-label="Submission track fit">
+        {trackFitCards.map((track) => (
+          <article className={`track-fit-card ${track.tone}`} key={track.title}>
+            <p className="eyebrow">{track.label}</p>
+            <h2>{track.title}</h2>
+            <p>{track.detail}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="panel sponsor-coverage-panel" aria-label="TxLINE sponsor coverage">
+        <div className="panel-heading compact">
+          <div>
+            <p className="eyebrow">TxLINE track coverage</p>
+            <h2>Covers the agent/tool brief, with the live-input gap stated plainly</h2>
+          </div>
+          <span className="status-chip track-primary">Built for autonomous operation</span>
+        </div>
+        <div className="sponsor-coverage-grid">
+          {txlineCoverageCards.map((item) => (
+            <article className="sponsor-coverage-card" key={item.title}>
+              <span>{item.label}</span>
+              <strong>{item.title}</strong>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <p className="sponsor-coverage-note">
+          Current status: the deployed application, public repository, demo video, technical pack
+          and synthetic judge modes are available. The mandatory live-input requirement remains
+          blocked until an activated TxLINE API token is configured so the server can obtain a guest
+          JWT and record one genuine fixture, odds and score-stream session.
+        </p>
+        <a className="button secondary button-link sponsor-pack-link" href="/submission">
+          Open technical documentation and submission pack
+        </a>
+      </section>
+
       <section className="architecture-strip panel" aria-label="Application architecture">
         {[
           "World Cup feed",
@@ -1087,10 +1105,18 @@ function SyntheticDashboard({ onViewChange }: { onViewChange: (view: Application
 
 export default function Home() {
   const [view, setView] = useState<ApplicationView>("demo");
+  const [autoStartJudge, setAutoStartJudge] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       try {
+        const shouldStartJudge =
+          new URLSearchParams(window.location.search).get("judge") === "1";
+        if (shouldStartJudge) {
+          setAutoStartJudge(true);
+          setView("demo");
+          return;
+        }
         const preferred = window.localStorage.getItem("proofswitch.application-view");
         const hasPaperSession =
           window.localStorage.getItem("proofswitch.live.paper-session") !== null;
@@ -1113,7 +1139,11 @@ export default function Home() {
   }
 
   return view === "demo" ? (
-    <SyntheticDashboard onViewChange={changeView} />
+    <SyntheticDashboard
+      key={autoStartJudge ? "judge" : "demo"}
+      onViewChange={changeView}
+      autoStartJudge={autoStartJudge}
+    />
   ) : (
     <LiveDashboard onSelectDemo={() => changeView("demo")} />
   );

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ProofSwitch — World Cup in-play risk operator",
     description:
-      "Fail-closed StablePrice monitoring, paper execution and Solana score-proof validation for World Cup 2026.",
+      "Fail-closed StablePrice monitoring, autonomous paper execution and a guarded optional Solana proof-validation path for World Cup 2026.",
     type: "website",
     images: [
       {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ProofSwitch — World Cup in-play risk operator",
     description:
-      "Fail-closed StablePrice monitoring, paper execution and Solana score-proof validation for World Cup 2026.",
+      "Fail-closed StablePrice monitoring, autonomous paper execution and a guarded optional Solana proof-validation path for World Cup 2026.",
     images: ["/og-submission.png"],
   },
 };

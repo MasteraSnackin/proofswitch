@@ -2,10 +2,21 @@
 
 ## Submission links
 
-- Demo video: <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds
+- Demo video: <https://youtu.be/0uxTKx0Jf0Q> — 4 minutes 48 seconds
 - Public GitHub repository: <https://github.com/MasteraSnackin/proofswitch>
 - Deployed application: <https://proofswitch.vercel.app>
 - Judge documentation: <https://proofswitch.vercel.app/submission>
+- Guided judge walkthrough: <https://proofswitch.vercel.app/?judge=1>
+- Machine-readable manifest: <https://proofswitch.vercel.app/api/submission>
+- Copy-ready organiser form: [`SUBMISSION_FORM.md`](./SUBMISSION_FORM.md)
+
+## Fast judge path
+
+1. Watch the 4-minute-48-second demo.
+2. Run the 90-second guided autonomous scenario and continue through the cancellation and recovery checkpoints.
+3. Inspect the manifest, public APIs and repository.
+
+All five initial-screening artefacts are published. The separate sponsor dependency is a credential-backed TxLINE run, which remains pending and is not claimed.
 
 ## Track
 
@@ -36,6 +47,17 @@ In-play markets move fastest when a goal, red card or feed failure occurs. Those
 - TxLINE credentials and judge access secrets remain server-side.
 - Solana verification is not claimed unless genuine TxLINE proof material passes the read-only validation runtime.
 - Automated build, lint, type, reducer, adapter, replay, access-control and evidence tests cover the main boundaries.
+
+## Strategy contract and novelty
+
+| Stage | Deterministic contract | Synthetic evidence |
+| --- | --- | --- |
+| Trigger | Suspend after a consensus move of at least four percentage points, a material score event or stale transport. | The goal-shock walkthrough crosses the two-provider quorum and four-point policy threshold. |
+| Action | Withdraw every open paper quote immediately and reject unsafe fills while protected. | Six paper quotes are cancelled at the first material breach. |
+| Recovery | Keep the market withdrawn until score confirmation, transport freshness, the minimum hold and three stable observations all pass. | The walkthrough pauses at cancellation and recovery checkpoints before releasing replacement quotes. |
+| Failure boundary | Live mode fails closed when credentials or contracts are invalid. | The public status endpoint reports configuration required and does not substitute synthetic data in live mode. |
+
+The distinguishing idea is that safe recovery is a first-class autonomous decision. Detecting a shock is not enough: ProofSwitch explains why the market remains withdrawn and records the evidence that permits reopening.
 
 ## TxLINE endpoints integrated
 
@@ -68,7 +90,7 @@ Every public response identifies its source as synthetic. These endpoints prove 
 
 ## TxLINE API feedback
 
-We liked the separation between initial snapshots and SSE updates, the normalised fixture, odds and score families, and StablePrice consensus values that map cleanly into a shock-detection policy. That structure lets the synthetic production-path rehearsal exercise the intended live reducer without representing the rehearsal as genuine TxLINE traffic.
+The integration design benefits from the separation between initial snapshots and SSE updates, the normalised fixture, odds and score families, and StablePrice consensus values that map cleanly into a shock-detection policy. That structure lets the synthetic production-path rehearsal exercise the intended live reducer without representing the rehearsal as genuine TxLINE traffic.
 
 The main friction was the multi-part live setup: sponsor-token access, guest-session authentication and matching configuration across the API host, Solana network, RPC and programme ID. A compact end-to-end devnet example covering authentication, stream resumption, score-sequence handling and the stat-validation proof lifecycle would reduce integration time.
 

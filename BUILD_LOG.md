@@ -87,7 +87,7 @@ live-readiness additions:
 
 - `npm run typecheck`: passed;
 - `npm run lint`: passed;
-- `npm test`: production build passed and 132 automated tests passed;
+- `npm test`: production build passed and 133 automated tests passed;
 - eight-second synthetic headless run: both streams connected, one 5.7-point
   shock suspension, one guarded recovery, two deterministic paper fills,
   55.45 maximum simulated liability and no transport-contract errors;
@@ -109,7 +109,8 @@ RPC; the genuine validation record above remains pending.
 - Public repository: <https://github.com/MasteraSnackin/proofswitch>
 - Deployed application: <https://proofswitch.vercel.app>
 - Judge pack: <https://proofswitch.vercel.app/submission>
-- Demo video: <https://youtu.be/mQ84gAyAx9s> — 4 minutes 49 seconds
+- Demo video: <https://youtu.be/0uxTKx0Jf0Q> — 4 minutes 48 seconds
+- Video build record and exact narration: [`VIDEO_BUILD.md`](./VIDEO_BUILD.md) and [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md)
 - Technical documentation and bounded pre-credential feedback are included in
   the repository and judge pack.
 

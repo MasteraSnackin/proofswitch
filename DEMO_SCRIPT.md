@@ -1,6 +1,8 @@
-# ProofSwitch — Demo Video Script
+# ProofSwitch — Demo Video Timed Outline
 
-Published length: **4 minutes 49 seconds**. Absolute maximum: **5 minutes**.
+The exact narration used by the published video is in [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md). This file is the judge-facing timed outline and shot list.
+
+Published length: **4 minutes 48 seconds**. Absolute maximum: **5 minutes**.
 
 ## 0:00–0:30 — The problem
 
@@ -40,7 +42,7 @@ Show runtime status, credential checks, the endpoint table and the synthetic-sou
 
 Show the scorecard, audit timeline and unverified Solana state.
 
-## 4:20–4:49 — Close
+## 4:20–4:48 — Close
 
 “ProofSwitch is built for sports trading teams and market makers who need fast, explainable protection during high-volatility moments. It is a working paper-trading agent, not a betting app. The submission targets Trading Tools and Agents and the London local prize. The deployed application, public repository, technical documentation and exact TxLINE endpoint list are linked with this submission.”
 
