@@ -2,7 +2,7 @@
 
 [![Submission checks](https://github.com/MasteraSnackin/proofswitch/actions/workflows/ci.yml/badge.svg)](https://github.com/MasteraSnackin/proofswitch/actions/workflows/ci.yml)
 
-[Live application](https://proofswitch.vercel.app) · [90-second judge walkthrough](https://proofswitch.vercel.app/?judge=1) · [4:48 demo video](https://youtu.be/5bsx35tDo-g) · [Judge pack](https://proofswitch.vercel.app/submission) · [Submission manifest](https://proofswitch.vercel.app/api/submission)
+[Live application](https://proofswitch.vercel.app) · [90-second judge walkthrough](https://proofswitch.vercel.app/?judge=1) · [4:48 demo video](https://youtu.be/M9kMuOt1kwc) · [Judge pack](https://proofswitch.vercel.app/submission) · [Submission manifest](https://proofswitch.vercel.app/api/submission)
 
 Local-first World Cup in-play risk operator for the TxOdds x Solana hackathon.
 
@@ -24,7 +24,7 @@ The complete judge-facing wording, endpoint mapping and evidence boundaries are 
 
 ## Judge Quick Start
 
-1. Watch the [4-minute-48-second demo](https://youtu.be/5bsx35tDo-g).
+1. Watch the [4-minute-48-second demo](https://youtu.be/M9kMuOt1kwc).
 2. Launch the [guided autonomous scenario](https://proofswitch.vercel.app/?judge=1) and continue through its cancellation and recovery checkpoints.
 3. Inspect the [machine-readable submission manifest](https://proofswitch.vercel.app/api/submission), public endpoints and source.
 
@@ -64,7 +64,7 @@ ProofSwitch is designed to cover the Trading Tools and Agents brief: a running a
 
 | Requirement | Status | Notes |
 | --- | --- | --- |
-| Demo video up to five minutes | Published and verified | <https://youtu.be/5bsx35tDo-g> — 4 minutes 48 seconds, covering the problem, deployed app, agent controls, production-path rehearsal and TxLINE integration boundary. |
+| Demo video up to five minutes | Published and verified | <https://youtu.be/M9kMuOt1kwc> — 4 minutes 48 seconds, covering the problem, deployed app, agent controls, production-path rehearsal and TxLINE integration boundary. |
 | Public repo | Published | <https://github.com/MasteraSnackin/proofswitch> |
 | Working deployed website or functional API/devnet endpoint | Published and verified | <https://proofswitch.vercel.app> with judge pack at <https://proofswitch.vercel.app/submission>. |
 | Brief technical documentation | Covered | README, `ARCHITECTURE.md`, reports and endpoint list cover the core idea and implementation. |
@@ -264,9 +264,9 @@ The main demo flow is:
 5. Request proof evidence, noting that synthetic runs remain unverified.
 6. Export the evidence pack or synthetic public summary.
 
-The repository includes a 1200×630 submission social card at `public/og-submission.png`. The published 4-minute-48-second demo video is available at <https://youtu.be/5bsx35tDo-g>.
+The repository includes a 1200×630 submission social card at `public/og-submission.png`. The published 4-minute-48-second demo video is available at <https://youtu.be/M9kMuOt1kwc>.
 
-The timed outline is in [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md), the exact published narration is in [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md), and the verified capture record is in [`VIDEO_BUILD.md`](./VIDEO_BUILD.md).
+The timed outline is in [`DEMO_SCRIPT.md`](./DEMO_SCRIPT.md), the exact published narration is in [`DEMO_TRANSCRIPT_ELEVENLABS.md`](./DEMO_TRANSCRIPT_ELEVENLABS.md), and the verified capture record is in [`VIDEO_BUILD.md`](./VIDEO_BUILD.md).
 
 ## API and CLI Reference
 

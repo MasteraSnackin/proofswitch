@@ -20,7 +20,7 @@ The TxLINE integration implements guest authentication, fixture discovery, odds 
 
 ## Demo video
 
-<https://youtu.be/5bsx35tDo-g> — 4 minutes 48 seconds
+<https://youtu.be/M9kMuOt1kwc> — 4 minutes 48 seconds
 
 ## Public repository
 

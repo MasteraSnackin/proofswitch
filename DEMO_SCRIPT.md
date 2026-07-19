@@ -1,6 +1,6 @@
 # ProofSwitch — Demo Video Timed Outline
 
-The exact narration used by the published video is in [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md). This file is the judge-facing timed outline and shot list.
+The exact narration used by the published video is in [`DEMO_TRANSCRIPT_ELEVENLABS.md`](./DEMO_TRANSCRIPT_ELEVENLABS.md). This file is the judge-facing timed outline and shot list.
 
 Published length: **4 minutes 48 seconds**. Absolute maximum: **5 minutes**.
 

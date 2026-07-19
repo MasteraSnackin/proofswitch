@@ -103,7 +103,7 @@ test("keeps the application deterministic and integration boundaries explicit", 
   assert.match(submissionConfig, /kind=scores/);
   assert.match(submissionConfig, /\/api\/scores\/stat-validation/);
   assert.match(submissionConfig, /https:\/\/github\.com\/MasteraSnackin\/proofswitch/);
-  assert.match(submissionConfig, /https:\/\/youtu\.be\/5bsx35tDo-g/);
+  assert.match(submissionConfig, /https:\/\/youtu\.be\/M9kMuOt1kwc/);
   assert.match(page, /Start 90-second judge walkthrough/);
   assert.match(page, /Open production-path rehearsal/);
   assert.match(page, /Latest material decision/);

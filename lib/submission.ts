@@ -3,8 +3,8 @@ export const submissionLinks = {
   judgeWalkthrough: "https://proofswitch.vercel.app/?judge=1",
   judgePack: "https://proofswitch.vercel.app/submission",
   repository: "https://github.com/MasteraSnackin/proofswitch",
-  demoVideo: "https://youtu.be/5bsx35tDo-g",
-  demoVideoEmbed: "https://www.youtube-nocookie.com/embed/5bsx35tDo-g",
+  demoVideo: "https://youtu.be/M9kMuOt1kwc",
+  demoVideoEmbed: "https://www.youtube-nocookie.com/embed/M9kMuOt1kwc",
 } as const;
 
 export const syntheticJudgeFixtureId = 20_260_001;

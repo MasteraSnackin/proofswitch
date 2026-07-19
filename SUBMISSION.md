@@ -2,7 +2,7 @@
 
 ## Submission links
 
-- Demo video: <https://youtu.be/5bsx35tDo-g> — 4 minutes 48 seconds
+- Demo video: <https://youtu.be/M9kMuOt1kwc> — 4 minutes 48 seconds
 - Public GitHub repository: <https://github.com/MasteraSnackin/proofswitch>
 - Deployed application: <https://proofswitch.vercel.app>
 - Judge documentation: <https://proofswitch.vercel.app/submission>

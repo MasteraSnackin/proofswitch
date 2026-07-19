@@ -17,6 +17,9 @@
     "test": "npm run build && node --test tests/*.test.*",
     "test:unit": "node --test tests/*.test.*",
     "agent": "tsx scripts/run-agent.ts",
+    "demo:voices": "node --env-file-if-exists=.env.local scripts/elevenlabs-demo.mjs --list-voices",
+    "demo:elevenlabs:check": "node --env-file-if-exists=.env.local scripts/elevenlabs-demo.mjs --dry-run",
+    "demo:elevenlabs": "node --env-file-if-exists=.env.local scripts/elevenlabs-demo.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"

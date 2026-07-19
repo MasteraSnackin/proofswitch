@@ -110,8 +110,8 @@ above remains pending.
 - Public repository: <https://github.com/MasteraSnackin/proofswitch>
 - Deployed application: <https://proofswitch.vercel.app>
 - Judge pack: <https://proofswitch.vercel.app/submission>
-- Demo video: <https://youtu.be/5bsx35tDo-g> — 4 minutes 48 seconds
-- Video build record and exact narration: [`VIDEO_BUILD.md`](./VIDEO_BUILD.md) and [`DEMO_TRANSCRIPT.md`](./DEMO_TRANSCRIPT.md)
+- Demo video: <https://youtu.be/M9kMuOt1kwc> — 4 minutes 48 seconds
+- Video build record and exact narration: [`VIDEO_BUILD.md`](./VIDEO_BUILD.md) and [`DEMO_TRANSCRIPT_ELEVENLABS.md`](./DEMO_TRANSCRIPT_ELEVENLABS.md)
 - Technical documentation and bounded pre-credential feedback are included in
   the repository and judge pack.
 
